@@ -1,0 +1,14 @@
+input, select {
+    width: 100%;
+    height: 30px;
+    border-radius: 10px;
+    border: 1px;
+    margin: 10px;
+}
+.newGame {
+    width: 25%;
+}
+
+.box {
+    background-color: rgb(114, 142, 4);
+}
