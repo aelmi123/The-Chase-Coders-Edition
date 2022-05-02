@@ -20,15 +20,18 @@ export const Homepage = () => {
   return (
     <>
     <div className='home'>
-      <h1>Welcome to quizName</h1>
+      <h1>Welcome to Quizzards</h1>
 
       <div className='rules'>
         <h3>The Rules</h3>
         <p>here are some rules</p>
       </div>
       
+      <button>Login</button>
       <button className='hidden' onClick={renderNewForm}>New Game</button>
       <button>Join Game</button>
+      <button>Leaderboard</button>
+      
       
     </div>
     <div className='form'>
