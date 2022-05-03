@@ -27,8 +27,11 @@ export const Homepage = () => {
         <p>here are some rules</p>
       </div>
       
+      <button>Login</button>
       <button className='hidden' onClick={renderNewForm}>New Game</button>
       <button>Join Game</button>
+      <button>Leaderboard</button>
+      
       
     </div>
     <div className='form'>

@@ -1,0 +1,18 @@
+version: '3'
+services:
+  server:
+    image: node:latest
+    working_dir: /server
+    volumes:
+      - type: bind
+        source: ./server
+        target: /server
+  db:
+    image: 'mongo:latest'
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=user
+      - MONGO_INITDB_ROOT_PASSWORD=password
+    volumes:
+      - "dbdata:/var/lib/mongodb/data"
+volumes:
+  dbdat
