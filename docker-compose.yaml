@@ -1,18 +1,31 @@
-version: '3'
+version: "3"
 services:
-  server:
+  api:
     image: node:latest
-    working_dir: /server
+    working_dir: /code
+    ports:
+      - 3001:3001
+    environment:
+      - PGUSER=habitUser
+      - PGHOST=db
+      - PGPASSWORD=password
+      - PGDATABASE=db
+      - PGPORT=5432
+    depends_on:
+      - db
     volumes:
       - type: bind
-        source: ./server
-        target: /server
+        source: ./api
+        target: /code
+    command: bash -c "npm install && npm run dev"
   db:
-    image: 'mongo:latest'
+    image: postgres:latest
     environment:
-      - MONGO_INITDB_ROOT_USERNAME=user
-      - MONGO_INITDB_ROOT_PASSWORD=password
+      - POSTGRES_DB=db
+      - POSTGRES_USER=habitUser
+      - POSTGRES_PASSWORD=password
     volumes:
-      - "dbdata:/var/lib/mongodb/data"
+      - "dbdata:/var/lib/postgresql/data"
+      - "./api/db:/docker-entrypoint-initdb.d/:ro"
 volumes:
-  dbdat
+  dbdata: {}
