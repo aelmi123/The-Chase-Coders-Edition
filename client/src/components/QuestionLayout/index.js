@@ -1,14 +1,26 @@
-import React, { useEffect }  from 'react'
+import React, { useEffect, useState }  from 'react'
 import {useSelector} from 'react-redux'
-import {  useNavigate } from 'react-router-dom'; 
+import {  useNavigate } from 'react-router-dom';
+import { getTopicId } from '../../actions/EventActions'
+import axios from 'axios'
 
 export const QuestionLayout = () => {
   const navigate=useNavigate()
+  const [quest, setQuest] = useState([])
   const userInfo = useSelector(state=>state.UserInfo)
   const {UserDetails} = userInfo
 
- const {diff}= UserDetails
- const {selectedTopic} =userInfo
+ const {difficulty}= UserDetails
+ const {questions} = UserDetails 
+ const {selectedTopic} = userInfo
+
+ const topicId = getTopicId(selectedTopic)
+
+ const getQuestions = async() => {
+   const { data } = await axios.get(`https://opentdb.com/api.php?amount=${questions}&category=${topicId}&difficulty=${difficulty}&type=multiple`)
+   console.log(data)
+   setQuest(data.results[0].question)
+ }
 
  console.log("here is details",selectedTopic)
 
@@ -16,7 +28,10 @@ export const QuestionLayout = () => {
    if(!UserDetails.difficulty){
      navigate("/")
    }
- })
+   else {
+     getQuestions()
+   }
+ }, [])
   return (
     <div className='container'>
 
@@ -25,11 +40,9 @@ export const QuestionLayout = () => {
         <div className='col-md-8 bg-primary'>
 
           <div className='p-4 d-flex justify-content-center align-items-center '>
-              <h6 className='bg-light p-4 w-50 text-center border rounded'> Question 5</h6>
+              <h6 className='bg-light p-4 w-50 text-center border rounded'>{quest}</h6>
 
           </div>
-
-
 
           <div className='p-2 d-flex  justify-content-center align-items-center rounded '>
               <div className='' style={{marginRight:"10px",fontSize:"25px"}}>Time:</div>
@@ -40,7 +53,7 @@ export const QuestionLayout = () => {
     
               <div className='w-25 text-center mb-4'>
                   <p className='bg-white border rounded'>Option 1</p>
-                  <p className='bg-white border rounded'>Option 2</           p>
+                  <p className='bg-white border rounded'>Option 2</p>
               </div>
 
               <div className='w-25 text-center'>
@@ -60,7 +73,7 @@ export const QuestionLayout = () => {
 
           <div className='d-flex justify-content-center align-items-center'>
                 <h6 className=' p-1  text-center ' style={{fontSize:"25px"}}> Level:</h6>
-                <h6 className=' p-1  text-center ' style={{fontSize:"25px"}}>{diff} </h6>
+                <h6 className=' p-1  text-center ' style={{fontSize:"25px"}}>{difficulty} </h6>
           </div>
           <div className='d-flex justify-content-center align-items-center'>
               <h6 className=' p-1  text-center ' style={{fontSize:"25px"}}> Topic:</h6>
