@@ -6,10 +6,10 @@ services:
     ports:
       - 3001:3001
     environment:
-      - PGUSER=habitUser
+      - PGUSER=QuizzardUser
       - PGHOST=db
       - PGPASSWORD=password
-      - PGDATABASE=db
+      - PGDATABASE=users
       - PGPORT=5432
     depends_on:
       - db
@@ -21,11 +21,11 @@ services:
   db:
     image: postgres:latest
     environment:
-      - POSTGRES_DB=db
-      - POSTGRES_USER=habitUser
+      - POSTGRES_DB=users
+      - POSTGRES_USER=QuizzardUser
       - POSTGRES_PASSWORD=password
     volumes:
       - "dbdata:/var/lib/postgresql/data"
-      - "./api/db:/docker-entrypoint-initdb.d/:ro"
+      - "./api/dbconfig:/docker-entrypoint-initdb.d/:ro"
 volumes:
-  dbdata: {}
+  dbdata:
