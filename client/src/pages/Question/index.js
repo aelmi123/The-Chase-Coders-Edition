@@ -1,9 +1,12 @@
 import React, { useEffect, useState }  from 'react'
 import { QuestionLayout } from '../../components/QuestionLayout'
+import { GetQuestions } from '../../actions/EventActions';
 
-export const Question = ({questions}) => {
-  const [options, setOptions] = useState();
+export const Question = ({}) => {
+    const [options, setOptions] = useState();
+    const [score, setScore] = useState(0)
     const [currQues, setCurrQues] = useState(0);
+    const [questions, setQuestions] = useState(GetQuestions())
   
     useEffect(() => {
       setOptions(
@@ -22,7 +25,7 @@ export const Question = ({questions}) => {
     };
   return (
     <div>
-        <QuestionLayout/>
+        <QuestionLayout currQues={currQues} setCurrQues={setCurrQues} questions={questions} options={options} score={score} setScore={setScore} setQuestions={setQuestions} correct={questions[currQues]?.correct_answer} />
     </div>
   )
 }
