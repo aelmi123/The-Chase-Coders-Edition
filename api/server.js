@@ -6,8 +6,10 @@ const server = express();
 server.use(cors());
 server.use(express.json());
 
+const usersRoutes = require('./routes/usersRoutes');
 
-// server.use('/', usersRoutes);
+server.use('/', usersRoutes);
+
 server.get('/', (req, res) => res.send('Welcome all Quizzards!'))
 
 
