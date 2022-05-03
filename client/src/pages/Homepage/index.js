@@ -20,7 +20,7 @@ export const Homepage = () => {
   return (
     <>
     <div className='home'>
-      <h1>Welcome to Quizzards</h1>
+      <h1>Welcome to You're a Quizard, Harry!</h1>
 
       <div className='rules'>
         <h3>The Rules</h3>
