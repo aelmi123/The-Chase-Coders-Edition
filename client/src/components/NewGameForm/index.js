@@ -11,7 +11,8 @@ export const NewGameForm = () => {
   const [name, setName] = useState()
   const [difficulty, setDifficulty ] = useState()
   const [players, setPlayers ] = useState()
-  const [questions, setQuestions] = useState()
+  const [room , setRoom] = useState()
+  const [questions, setQuestions] = useState(20)
 
   const updateName = (e) => {
     const inputName = e.target.value
@@ -21,18 +22,18 @@ export const NewGameForm = () => {
     const inputPlayers = e.target.value
     setPlayers(inputPlayers)
   }
+  const updateRoom = (e) => {
+    const inputRoom = e.target.value
+    setRoom(inputRoom)
+  }
   const updateDifficulty = (e) => {
     const inputDiff = e.target.value
     setDifficulty(inputDiff)
   }
-  const updateQuestions = (e) => {
-    const inputQuestion = e.target.value
-    setQuestions(inputQuestion)
-  }
   const handleSubmit = (e) => {
     e.preventDefault()
-    const userData = {name: name, players: players, difficulty: difficulty, questions: questions}
-    console.log(userInfo)
+    const userData = {name: name, players: players, room: room, difficulty: difficulty, questions: questions}
+    console.log(userData)
     dispatch(userInfo(userData))
     navigate('/topics')
   }
@@ -46,6 +47,9 @@ export const NewGameForm = () => {
         <label htmlFor='NumPlayers'>No. of Players:</label>
         <input type='number' name='NumPlayers' min="1" max="5" onChange={updatePlayers}/>
 
+        <label htmlFor='RoomName'>Room Name:</label>
+        <input type='text' name='RoomName'  onChange={updateRoom}/>
+
         <label htmlFor='Difficulty'>Difficulty:</label>
         <select id='Difficulty' onChange={updateDifficulty}> 
             <option >Please Select One</option>
@@ -53,9 +57,6 @@ export const NewGameForm = () => {
             <option value="medium">Medium</option>
             <option value="hard">Hard</option>
         </select>
-
-        <label htmlFor='NumQuestions'>No. of Questions</label>
-        <input type='number' name='NumQuestions' min="1" max="20" onChange={updateQuestions}/>
 
         <input type='submit' value='Start Game'/>
     </form>

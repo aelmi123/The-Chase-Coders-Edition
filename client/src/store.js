@@ -1,19 +1,8 @@
-import { applyMiddleware, createStore, compose, combineReducers } from "redux";
+import { applyMiddleware, createStore} from "redux";
 import thunk from 'redux-thunk';
-// import {Data}  from "./reducers/EventReducers";
-import { UserInfo } from "./reducers/EventReducers";
-const initialState = {
-    
- 
+import { EventReducers } from "./reducers/EventReducers";
+import { composeWithDevTools } from 'redux-devtools-extension';
 
-};
-const reducer = combineReducers({
-UserInfo
-
-});
-
-const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-
-const store = createStore(reducer,initialState, composeEnhancer(applyMiddleware(thunk)));
+const store = createStore(EventReducers, composeWithDevTools(applyMiddleware(thunk)));
 
 export default store;

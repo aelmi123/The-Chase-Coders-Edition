@@ -10,8 +10,8 @@ export const TopicGrid = () => {
     const dispatch=useDispatch()
     const { Topics, userName } = useSelector(
         (state) => ({
-        Topics: state.UserInfo.Topics,
-        userName:state.UserInfo.UserDetails.name
+        Topics: state.Topics,
+        userName:state.UserDetails.name
         }),
     );
     useEffect(()=>{

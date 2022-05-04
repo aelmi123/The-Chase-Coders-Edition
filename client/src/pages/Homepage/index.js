@@ -1,5 +1,7 @@
 import React from 'react';
 import { NewGameForm } from '../../components/NewGameForm';
+import { Leaderboard } from '../../components/Leaderboard'
+import { Timer } from '../../components/Timer'
 import './styles.css'
 
 export const Homepage = () => {
@@ -17,6 +19,19 @@ export const Homepage = () => {
     }
    
   }
+  const renderLeaderboard = e => {
+    console.log(e.target.className)
+    const div = document.querySelector('.leaderboard')
+    if (e.target.className === 'hidden'){
+      e.target.className = ''
+      div.style.display = 'block'
+
+    }
+    else {
+      e.target.className = 'hidden'
+      div.style.display = 'none'
+    }
+  }
   return (
     <>
     <div className='home'>
@@ -26,18 +41,20 @@ export const Homepage = () => {
         <h3>The Rules</h3>
         <p>here are some rules</p>
       </div>
+      <Timer/>
       
-      <button>Login</button>
       <button className='hidden' onClick={renderNewForm}>New Game</button>
       <button>Join Game</button>
-      <button>Leaderboard</button>
+      <button className='hidden' onClick={renderLeaderboard}>Leaderboard</button>
       
       
     </div>
     <div className='form'>
     <NewGameForm/>
     </div>
-      
+    <div className='leaderboard'>
+    <Leaderboard/>
+    </div>
     </>
   )
 }

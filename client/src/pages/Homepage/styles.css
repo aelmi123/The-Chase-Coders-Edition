@@ -1,5 +1,6 @@
 body {
-    background-color: cadetblue;
+    background-image: url('https://images.squarespace-cdn.com/content/v1/54d15998e4b0553df778d21d/1587410706320-FWQ3NAYEL6KNVYIGKA8Y/PixelPro+Animated+Background+5.png?format=1000w');
+    background-color: rgb(43, 57, 93);
     color: white;
 }
 
@@ -17,5 +18,8 @@ button {
     text-align: center;
 }
 .form {
+    display: none;
+}
+.leaderboard {
     display: none;
 }
