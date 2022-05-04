@@ -4,7 +4,8 @@ const pg = require('pg');
 jest.mock('pg')
 
 const db = require('../../../dbconfig/init');
-const { Testwatcher } = require('jest')
+const { Testwatcher } = require('jest');
+const Users = require('../../../models/User');
 
 const userOne = {
     id: '1',
@@ -38,36 +39,57 @@ describe('User', () => {
         })
     });
 
-    // describe('createUser', () => {
-    //     it('Resolves username being created successfully', async () => {
-    //         jest.spyOn(db, 'query')
-    //         .mockResolvedValueOnce({rows:{}})
-    //         .mockResolvedValueOnce({rows: [userTwo]})
-           
-    //     const result = await User.createUser(userTwo.username, userTwo.score)
-    //     expect(result).toHaveProperty('id', '2');
-    //     expect(result).toHaveProperty('username', 'test2')
-    //     expect(result).toHaveProperty('score', '20')
-    //     })
-    // })
-
-        describe('createUser', () => {
-        it ('resolves with successful player created', async () => {
+    describe('create', () => {
+        it('successfully resolves with created player', async () => {
             let testUser = [{username: "Ayato", score: 100}]
             jest.spyOn(db, 'query')
-                .mockResolvedValueOnce({rows: [{...testUser[0], id:1}]})
-            const created = await Users.createUser(testUser)
-            expect(created).toEqual([{"id": 1, "username": "Ayato", "score": 100}])
+                .mockResolvedValueOnce({rows: [{...testUser[0], id: 1}]})
+            const createdUser = await Users.createUser(testUser)
+            expect(createdUser).toEqual([{"id": 1, "username": "Ayato", "score": 100}])
         })
-    })
 
-        test('user already exists', async () => {
+
+        it('successfully resolves with second created player', async () => {
+            let testUser = [{username: "Ayato", score: 100}, {username: "Venti", score: 89}]
             jest.spyOn(db, 'query')
-            .mockResolvedValueOnce({rows:[1]})
-            .mockResolvedValueOnce({rows:{}})
-        return User.createUser(userTwo.username, userTwo.score).catch(error => {
-            expect(error).toBe('Failed to store user')
+                .mockResolvedValueOnce({rows: [{...testUser[0], id: 1}]})
+                .mockResolvedValueOnce({rows: [{...testUser[1], id: 2}]})
+            const createdUser = await Users.createUser(testUser)
+            expect(createdUser).toEqual([{"id": 1, "username": "Ayato", "score": 100}, {"id": 2, "username": "Venti", "score": 89} ])
         })
+
+        it('successfully resolves with third created player', async () => {
+            let testUser = [{username: "Ayato", score: 100}, {username: "Venti", score: 89}, {username: "Ayaka", score: 60}]
+            jest.spyOn(db, 'query')
+                .mockResolvedValueOnce({rows: [{...testUser[0], id: 1}]})
+                .mockResolvedValueOnce({rows: [{...testUser[1], id: 2}]})
+                .mockResolvedValueOnce({rows: [{...testUser[2], id: 3}]})
+            const createdUser = await Users.createUser(testUser)
+            expect(createdUser).toEqual([{"id": 1, "username": "Ayato", "score": 100}, {"id": 2, "username": "Venti", "score": 89}, {"id": 3, "username": "Ayaka", "score": 60} ])
+        })
+
+        it('successfully resolves with fourth created player', async () => {
+            let testUser = [{username: "Ayato", score: 100}, {username: "Venti", score: 89}, {username: "Ayaka", score: 60}, {username: "Raiden", score: 75}]
+            jest.spyOn(db, 'query')
+                .mockResolvedValueOnce({rows: [{...testUser[0], id: 1}]})
+                .mockResolvedValueOnce({rows: [{...testUser[1], id: 2}]})
+                .mockResolvedValueOnce({rows: [{...testUser[2], id: 3}]})
+                .mockResolvedValueOnce({rows: [{...testUser[3], id: 4}]})
+            const createdUser = await Users.createUser(testUser)
+            expect(createdUser).toEqual([{"id": 1, "username": "Ayato", "score": 100}, {"id": 2, "username": "Venti", "score": 89}, {"id": 3, "username": "Ayaka", "score": 60}, {"id": 4, "username": "Raiden", "score": 75}  ])
+        })
+
+    });
+
+    test('user already exists', async () => {
+        jest.spyOn(db, 'query')
+        .mockResolvedValueOnce({rows:[1]})
+        .mockResolvedValueOnce({rows:{}})
+    return User.createUser(userTwo.username, userTwo.score).catch(error => {
+        expect(error).toBe('Failed to store user')
     })
+});
+
+  
     
 })
