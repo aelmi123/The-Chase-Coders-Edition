@@ -45,7 +45,7 @@ class Users {
                     resolve ([user1.rows[0], user2.rows[0], user3.rows[0], user4.rows[0]])
                 } 
             } catch (error) {
-                reject(`Failed to store user`)
+                reject("Could not create a user")
             }
         })
     }
