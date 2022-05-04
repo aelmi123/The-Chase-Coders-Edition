@@ -1,7 +1,6 @@
 const usersController = require('../../../controllers/users');
 const User = require('../../../models/User');
 
-
 const db = require('../../../dbconfig/init');
 
 const mockSend = jest.fn();
@@ -9,11 +8,15 @@ const mockJson = jest.fn();
 const mockStatus = jest.fn(code => ({ send: mockSend, json: mockJson }))
 const mockRes = { status: mockStatus }
 
+
+
+
 let userOne = {
     id: 1,
     username: 'peterlydev' ,
     score: 10
 };
+
 
 describe('Users controller', () => {
     beforeEach(() => jest.clearAllMocks());
@@ -31,10 +34,10 @@ describe('Users controller', () => {
 
     describe('createUsers', () => {
         it('creates users with status 201', async () => {
-            let testUser = {
+            let testUser = [{
                 username: 'peterlydev',
                 score: '10'
-            }
+            }]
 
             jest.spyOn(db, 'query')
             .mockResolvedValue({rows: []})
