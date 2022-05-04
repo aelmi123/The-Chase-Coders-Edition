@@ -1,5 +1,5 @@
 
-export const UserInfo=(state={
+const initialState={
 
 Topics:[
     {name:"General Knowledge",color:"secondary" },
@@ -20,10 +20,12 @@ UserDetails:{
     name: null,
     players: null,
     difficulty: null,
-    questions: null
+    questions: null,
+    room: null
 }
 
-},action)=>{
+}
+export const EventReducers = (state= initialState, action)=>{
   
 switch(action.type){
 
@@ -39,8 +41,8 @@ switch(action.type){
             selectedTopic:action.payload
         }
 
-default:
-    return state
+    default:
+        return state
 
 }
 
