@@ -16,7 +16,7 @@ class Users {
                 const users = result.rows.map(r => new Users(r));
                 resolve(users);
             } catch(error){
-                reject(`Could not retrieve users: ${error}`)
+                reject("Could not retrieve users!")
             }
         });
     };
@@ -43,7 +43,7 @@ class Users {
                     const user3= await db.query(`INSERT INTO users (username, score) VALUES ($1, $2) RETURNING *;`, [data[2].username, data[2].score])
                     const user4= await db.query(`INSERT INTO users (username, score) VALUES ($1, $2) RETURNING *;`, [data[3].username, data[3].score])
                     resolve ([user1.rows[0], user2.rows[0], user3.rows[0], user4.rows[0]])
-                }
+                } 
             } catch (error) {
                 reject(`Failed to store user`)
             }
