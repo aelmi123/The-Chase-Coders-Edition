@@ -86,7 +86,7 @@ describe('User', () => {
         .mockResolvedValueOnce({rows:[1]})
         .mockResolvedValueOnce({rows:{}})
     return User.createUser(userTwo.username, userTwo.score).catch(error => {
-        expect(error).toBe('Failed to store user')
+        expect(error).toBe("Could not create a user")
     })
 });
 
