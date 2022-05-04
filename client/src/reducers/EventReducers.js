@@ -21,7 +21,8 @@ UserDetails:{
     players: null,
     difficulty: null,
     questions: null,
-    room: null
+    room: null,
+    score: null
 }
 
 }
