@@ -43,15 +43,14 @@ export const getTopicId = (topic) => {
 }
 
  export const GetQuestions = async() => {
-    const userInfo = useSelector(state=>state.UserInfo)
-    const {UserDetails} = userInfo
-
+    const UserDetails = useSelector(state=>state.UserDetails)
+    const selectedTopic = useSelector(state => state.selectedTopic)
     const {difficulty}= UserDetails
     const {questions} = UserDetails 
-    const {selectedTopic} = userInfo
-
+    return async dispatch => {
     const topicId = getTopicId(selectedTopic)
     const { data } = await axios.get(`https://opentdb.com/api.php?amount=${questions}&category=${topicId}&difficulty=${difficulty}&type=multiple`)
     console.log(data)
-    return data.results
+    dispatch(data.results)
+    }
  }

@@ -1,16 +1,14 @@
-import React, { useEffect, useState }  from 'react'
+import React, { useState }  from 'react'
 import {useSelector} from 'react-redux'
 import {  useNavigate } from 'react-router-dom';
-import { getTopicId } from '../../actions/EventActions'
-import axios from 'axios'
+// import { getTopicId } from '../../actions/EventActions'
+// import axios from 'axios'
 
 export const QuestionLayout = ({currQues, setCurrQues, questions, options, score, setScore, setQuestions, correct}) => {
   const navigate = useNavigate();
-  const userInfo = useSelector(state=>state.UserInfo)
-  const {UserDetails} = userInfo
-
+  const UserDetails = useSelector(state=>state.UserDetails)
   const {difficulty}= UserDetails
-  const {selectedTopic} = userInfo
+  const selectedTopic = useSelector(state => state.selectedTopic)
   const [selected, setSelected] = useState()
 
   const handleSelect = (i) => {
@@ -59,7 +57,9 @@ export const QuestionLayout = ({currQues, setCurrQues, questions, options, score
 
           <div className=' d-flex  justify-content-around align-items-center rounded '>
     
-              {options && options.map((i) => <button className='bg-white border rounded' key={i} onClick={() => handleCheck(i)} disabled={selected}>{i}</button>)}
+              {options && options.map((i) => <button className={`bg-white border rounded ${selected && handleSelect(i)}`} key={i} onClick={() => handleCheck(i)} disabled={selected}>{i}</button>)}
+
+              <button onClick={() => handleNext}>{currQues > 20 ? "Submit" : "Next Question"}</button>
               {/* <div className='w-25 text-center mb-4'>
                   <p className='bg-white border rounded'>Option 1</p>
                   <p className='bg-white border rounded'>Option 2</p>
