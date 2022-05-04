@@ -17,7 +17,7 @@ async function createUsers (req, res){
         const createdUsers = await Users.createUser(data)
         res.status(201).json(createdUsers)
     } catch(error){
-        res.status(500).json({ error });
+        res.status(500).json({msg: "Username already exists!" });
     }
 }
 
