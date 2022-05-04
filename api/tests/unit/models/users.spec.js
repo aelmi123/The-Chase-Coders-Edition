@@ -79,7 +79,7 @@ describe('User', () => {
             expect(createdUser).toEqual([{"id": 1, "username": "Ayato", "score": 100}, {"id": 2, "username": "Venti", "score": 89}, {"id": 3, "username": "Ayaka", "score": 60}, {"id": 4, "username": "Raiden", "score": 75}  ])
         })
 
-    })
+    });
 
     test('user already exists', async () => {
         jest.spyOn(db, 'query')
@@ -88,7 +88,7 @@ describe('User', () => {
     return User.createUser(userTwo.username, userTwo.score).catch(error => {
         expect(error).toBe('Failed to store user')
     })
-})
+});
 
   
     
