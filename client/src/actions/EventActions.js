@@ -1,5 +1,5 @@
-import axios from 'axios'
-import {useSelector} from 'react-redux'
+// import axios from 'axios'
+// import {useSelector} from 'react-redux'
 
 export const userInfo=(obj=>async(dispatch)=>{
 
@@ -42,15 +42,15 @@ export const getTopicId = (topic) => {
     }
 }
 
- export const GetQuestions = async() => {
-    const UserDetails = useSelector(state=>state.UserDetails)
-    const selectedTopic = useSelector(state => state.selectedTopic)
-    const {difficulty}= UserDetails
-    const {questions} = UserDetails 
-    return async dispatch => {
-    const topicId = getTopicId(selectedTopic)
-    const { data } = await axios.get(`https://opentdb.com/api.php?amount=${questions}&category=${topicId}&difficulty=${difficulty}&type=multiple`)
-    console.log(data)
-    dispatch(data.results)
-    }
- }
+//  export const GetQuestions = async() => {
+//     const UserDetails = useSelector(state=>state.UserDetails)
+//     const selectedTopic = useSelector(state => state.selectedTopic)
+//     const {difficulty}= UserDetails
+//     const {questions} = UserDetails 
+//     return async dispatch => {
+//     const topicId = getTopicId(selectedTopic)
+//     const { data } = await axios.get(`https://opentdb.com/api.php?amount=${questions}&category=${topicId}&difficulty=${difficulty}&type=multiple`)
+//     console.log(data)
+//     dispatch(data)
+//     }
+//  }
