@@ -12,7 +12,7 @@ class Users {
     static get all(){
         return new Promise(async (resolve, reject) => {
             try{
-                const result = await db.query(`SELECT * FROM users;`)
+                const result = await db.query(`SELECT * FROM users ORDER BY score DESC;`)
                 const users = result.rows.map(r => new Users(r));
                 resolve(users);
             } catch(error){
