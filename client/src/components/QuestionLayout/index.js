@@ -7,6 +7,7 @@ import { getTopicId } from "../../actions/EventActions";
 import './style.css';
 
 import axios from "axios";
+import { flushSync } from "react-dom";
 export const QuestionLayout = ({
   Questions,
   difficulty,
@@ -18,8 +19,14 @@ export const QuestionLayout = ({
   const [Shuffled, SetShuffled] = useState([]);
   const [score, SetScore] = useState(0);
   const [stopQuiz, SetStopQuiz] = useState(true);
+  // const [question, setQuestion]=useState([])
+  // const [questionIndex, setQuestionIndex] = useState(0)
+  const quizData = useSelector((state) => state.quizData);
+  // const [color, setColor] = useState('black')
+  // const [disabled, setDisabled] = useState(false)
   const navigate = useNavigate();
   const dispatch = useDispatch()
+  
   useEffect(() => {
     let Options = [];
     if (Questions && Questions[index] && Questions[index].question) {
@@ -90,6 +97,31 @@ export const QuestionLayout = ({
     Questions.length
   );
   console.log(Shuffled);
+
+  // useEffect(()=>{
+  //   if(quizData?.length) {
+  //     const questions = quizData[questionIndex]
+  //     const question = [questions.question]
+  //     setQuestion(question)
+  //   } 
+  // }, [quizData, questionIndex])
+  
+  // const handleClick = (e) => {
+  //   const question = quizData[questionIndex]
+  //   if(e.target.value === question.correct_answer ){
+  //     setDisabled(true)
+
+  //     console.log(e.target)
+  //     setColor('green')
+  //     dispatch({
+  //       type: "UPDATE_SCORE",
+  //     });  
+  //   } else if (e.target.value !== question.correct_answer ){
+  //    setColor('red')
+  //     setDisabled(true)
+
+  //   }
+  
   return (
     <>
       <div className="container">
