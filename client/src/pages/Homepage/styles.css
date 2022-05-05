@@ -1,14 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Dancing+Script:wght@700&family=Grape+Nuts&family=Indie+Flower&family=Lobster&family=Poppins:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Cinzel+Decorative:wght@900&family=Dancing+Script:wght@700&family=Grape+Nuts&family=Indie+Flower&family=Lobster&family=Poppins:wght@100&family=Quicksand&display=swap');
+@import url('http://fonts.cdnfonts.com/css/harry-potter');
 
 body {
-    /* background-image: url('https://images.squarespace-cdn.com/content/v1/54d15998e4b0553df778d21d/1587410706320-FWQ3NAYEL6KNVYIGKA8Y/PixelPro+Animated+Background+5.png?format=1000w'); */
-    background-color: #003049;
+    background-image: url('https://preview.redd.it/cxeimwflyo881.png?width=800&format=png&auto=webp&s=2160be26be2b962a1b9048c2e6236bbfe643c71c');
     color: white;
     font-family: 'Indie Flower';
+    /* background-repeat: no-repeat; */
+    /* background-position: center; */
+    background-size: cover;
 }
 
 .title {
-    font-family: 'Grape Nuts';
+    font-family: 'Harry Potter';
     padding: 75px 0px 10px ;
     font-size: 50px;
 }
@@ -16,9 +19,9 @@ body {
 
 .rules {
     font-family: 'sans-serif';
-    background-color: lightgrey;
+    background:  #9bc194;
     /* width: 50%; */
-    border: 15px #003049;
+    border: 15px ;
     padding: 35px;;
     margin: 50px;
     color: black;
@@ -35,11 +38,20 @@ button {
     border-radius: 12px;
     margin: 10px;
     padding: 10px;
-    background-color: bisque;
+    background: -webkit-linear-gradient(left, #09582f, #9bc194);
+    color: white;
+    font-size: 30px;
     text-align: center;
+    font-family:'Cinzel Decorative';
 }
 .form {
     display: none;
+}
+
+.newGame {
+    margin: 30px auto;
+    position: relative;
+    right: 1%;
 }
 .leaderboard {
     display: none;
