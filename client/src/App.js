@@ -1,7 +1,7 @@
 import { Homepage } from './pages/Homepage'
 import { Topics } from "./pages/Topics"
 import { Question } from './pages/Question';
-import Results from './pages/Results/Results';
+import {Results} from './pages/Results';
 import { Routes, Route } from "react-router-dom";
 import './App.css';
 

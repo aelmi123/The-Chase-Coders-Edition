@@ -36,6 +36,7 @@ export const Question = () => {
   const { difficulty } = UserDetails;
   const { questions } = UserDetails;
   const { selectedTopic } = useSelector((state) => state.selectedTopic);
+  console.log(selectedTopic)
 
   const topicId = getTopicId(selectedTopic);
 

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { updateScore } from '../../actions/EventActions';
 import { getTopicId } from "../../actions/EventActions";
 
 import axios from "axios";
@@ -35,19 +36,19 @@ export const QuestionLayout = ({
     if (e.target.value === Questions[index].correct_answer) {
       // Correct answer selected
       SetScore(score + 1);
+      
     } else {
       // wrong answer has been selected
     }
-    if (index === Questions.length - 1) {
+    if (index === Questions.length) {
       SetStopQuiz(false);
+      updateScore(score)
 
       const SaveScore = {
-        name: UserDetails.name,
-        score:
-          e.target.value === Questions[index].correct_answer
-            ? score + 1
-            : score,
+        username: UserDetails.name,
+        score: score
       };
+      console.log(SaveScore)
       axios.post("http://localhost:3001/leaderboard", SaveScore);
       // navigate("/");
     } else {
@@ -102,20 +103,16 @@ export const QuestionLayout = ({
               {" "}
               <h6
                 style={{ color: "black" }}
-                className="bg-light p-4 w-50 text-center border rounded"
-              >
+                className="bg-light p-4 w-50 text-center border rounded">
                 {" "}
-                Score {score}
+                Score: {score}
               </h6>{" "}
             </div>{" "}
             <div className="d-flex justify-content-center align-items-center">
               {" "}
               <h6 className=" p-1  text-center " style={{ fontSize: "25px" }}>
                 {" "}
-                Level:
-              </h6>{" "}
-              <h6 className=" p-1  text-center " style={{ fontSize: "25px" }}>
-                {difficulty}{" "}
+                Level: {difficulty}
               </h6>{" "}
             </div>{" "}
             <div className="d-flex justify-content-center align-items-center">
@@ -123,9 +120,6 @@ export const QuestionLayout = ({
               <h6 className=" p-1  text-center " style={{ fontSize: "25px" }}>
                 {" "}
                 Topic: {selectedTopic}
-              </h6>{" "}
-              <h6 className=" p-1  text-center " style={{ fontSize: "25px" }}>
-                {selectedTopic}
               </h6>{" "}
             </div>{" "}
           </div>{" "}

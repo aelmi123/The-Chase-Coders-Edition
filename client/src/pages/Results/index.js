@@ -4,7 +4,7 @@ import {Leaderboard} from '../../components/Leaderboard'
 import { useNavigate } from 'react-router-dom';
 import './styles.css'
 
-function Results() {
+export const Results = () => {
   const navigate = useNavigate();
   const score = useSelector(state => state.score)
   return (
@@ -20,4 +20,4 @@ function Results() {
   )
 };
 
-export default Results
+

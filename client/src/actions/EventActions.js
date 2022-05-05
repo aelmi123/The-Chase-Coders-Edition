@@ -4,16 +4,16 @@
 export const userInfo=(obj=>async(dispatch)=>{
 
     dispatch({
-        type:"UserInfo",
+        type:"USER_INFO",
         payload:obj
 
     })
 
 })
 export const updateScore=(obj=>async(dispatch)=>{
-
+    console.log("here is", obj)
     dispatch({
-        type:"updateScore",
+        type:"UPDATE_SCORE",
         payload:obj
 
     })
@@ -22,7 +22,7 @@ export const updateScore=(obj=>async(dispatch)=>{
 export const selectedTopic=(obj=>async(dispatch)=>{
 console.log("here is", obj)
     dispatch({
-        type:"selectedTopic",
+        type:"SELECTED_TOPIC",
         payload:obj
 
     })
