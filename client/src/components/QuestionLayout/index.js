@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { updateScore } from '../../actions/EventActions';
+import { Timer } from '../Timer'
 import { getTopicId } from "../../actions/EventActions";
 
 import axios from "axios";
@@ -17,6 +18,7 @@ export const QuestionLayout = ({
   const [score, SetScore] = useState(0);
   const [stopQuiz, SetStopQuiz] = useState(true);
   const navigate = useNavigate();
+  const dispatch = useDispatch()
   useEffect(() => {
     let Options = [];
     if (Questions && Questions[index] && Questions[index].question) {
@@ -27,22 +29,46 @@ export const QuestionLayout = ({
       );
       Options.push(Questions[index].correct_answer);
     }
-    console.log(Options);
-    SetShuffled(Options);
+    function shuffle(Options) {
+        let currentIndex = Options.length,
+          randomIndex;
+  
+        // While there remains elements to shuffle.
+        while (currentIndex != 0) {
+          // Pick a remaining element.
+          randomIndex = Math.floor(Math.random() * currentIndex);
+          currentIndex--;
+  
+          // And swap it with the current element.
+          [Options[currentIndex], Options[randomIndex]] = [
+            Options[randomIndex],
+            Options[currentIndex],
+          ];
+        }
+  
+        return Options;
+      }
+  
+      shuffle(Options);
+      console.log(Options);
+  
+      SetShuffled(shuffle(Options));
   }, [index, Questions, score]);
-  console.log("userdetails", UserDetails);
+  console.log("user details", UserDetails);
   const optionPressed = (e) => {
     console.log("option selected", e.target.value);
     if (e.target.value === Questions[index].correct_answer) {
       // Correct answer selected
       SetScore(score + 1);
-      
-    } else {
-      // wrong answer has been selected
-    }
-    if (index === Questions.length) {
+      console.log(score)
+    } 
+    // else {
+    //   // wrong answer has been selected
+    // }
+    if (index === Questions.length - 1) {
       SetStopQuiz(false);
-      updateScore(score)
+      console.log(score)
+      dispatch(updateScore(score))
 
       const SaveScore = {
         username: UserDetails.name,
@@ -50,7 +76,6 @@ export const QuestionLayout = ({
       };
       console.log(SaveScore)
       axios.post("http://localhost:3001/leaderboard", SaveScore);
-      // navigate("/");
     } else {
       setIndex(index + 1);
     }
@@ -73,17 +98,18 @@ export const QuestionLayout = ({
           {stopQuiz ? (
             <div className="col-md-8 bg-primary">
               <div className="p-4 d-flex justify-content-center align-items-center ">
+              <h1>Question {index + 1}: </h1>
                 <h6
                   style={{ color: "Black" }}
                   className="bg-light p-4 w-50 text-center border rounded"
                 >
-                  {Questions && Questions[index] && Questions[index].question}
+                   {Questions && Questions[index] && Questions[index].question}
                 </h6>
               </div>
               <div className=" d-flex  justify-content-around align-items-center rounded ">
                 <div className="w-25 text-center mb-4">
-                  {Shuffled.map((item) => (
-                    <button
+                  {Shuffled.map((item, i) => (
+                    <button key={i}
                       style={{ color: "Black" }}
                       className="option-btn bg-white border rounded"
                       onClick={optionPressed}
@@ -108,6 +134,10 @@ export const QuestionLayout = ({
                 Score: {score}
               </h6>{" "}
             </div>{" "}
+            <div className='p-2 d-flex  justify-content-center align-items-center rounded '>
+              <div className='' style={{marginRight:"10px",fontSize:"25px"}}>Time:</div>
+              <div  className='text-lg' style={{fontSize:"25px"}}><Timer/></div>
+          </div>
             <div className="d-flex justify-content-center align-items-center">
               {" "}
               <h6 className=" p-1  text-center " style={{ fontSize: "25px" }}>

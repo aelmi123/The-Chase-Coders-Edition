@@ -1,12 +1,15 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import {Leaderboard} from '../../components/Leaderboard'
 import { useNavigate } from 'react-router-dom';
 import './styles.css'
+import axios from 'axios';
 
 export const Results = () => {
   const navigate = useNavigate();
   const score = useSelector(state => state.score)
+  console.log(score)
+
   return (
       <>
       <h1>Results</h1>
