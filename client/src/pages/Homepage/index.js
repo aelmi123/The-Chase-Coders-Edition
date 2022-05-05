@@ -34,7 +34,7 @@ export const Homepage = () => {
   }
   return (
     <>
-    <div className='home'>
+    <div className ='home'>
       <h1 className='title'>Welcome to You're a Quizard, Harry!</h1>
 
       <div className='rules'>

@@ -3,7 +3,7 @@ const User = require('../../../models/User');
 const pg = require('pg');
 jest.mock('pg')
 
-const db = require('../../../dbconfig/init');
+const db = require('../../../init');
 const { Testwatcher } = require('jest');
 const Users = require('../../../models/User');
 

@@ -1,7 +1,7 @@
 const usersController = require('../../../controllers/users');
 const User = require('../../../models/User');
 
-const db = require('../../../dbconfig/init');
+const db = require('../../../init');
 
 const mockSend = jest.fn();
 const mockJson = jest.fn();
