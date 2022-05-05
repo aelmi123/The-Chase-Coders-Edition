@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { updateScore } from '../../actions/EventActions';
+import { Timer } from '../Timer'
 import { getTopicId } from "../../actions/EventActions";
 
 import axios from "axios";
@@ -97,11 +98,12 @@ export const QuestionLayout = ({
           {stopQuiz ? (
             <div className="col-md-8 bg-primary">
               <div className="p-4 d-flex justify-content-center align-items-center ">
+              <h1>Question {index + 1}: </h1>
                 <h6
                   style={{ color: "Black" }}
                   className="bg-light p-4 w-50 text-center border rounded"
                 >
-                  {Questions && Questions[index] && Questions[index].question}
+                   {Questions && Questions[index] && Questions[index].question}
                 </h6>
               </div>
               <div className=" d-flex  justify-content-around align-items-center rounded ">
@@ -132,6 +134,10 @@ export const QuestionLayout = ({
                 Score: {score}
               </h6>{" "}
             </div>{" "}
+            <div className='p-2 d-flex  justify-content-center align-items-center rounded '>
+              <div className='' style={{marginRight:"10px",fontSize:"25px"}}>Time:</div>
+              <div  className='text-lg' style={{fontSize:"25px"}}><Timer/></div>
+          </div>
             <div className="d-flex justify-content-center align-items-center">
               {" "}
               <h6 className=" p-1  text-center " style={{ fontSize: "25px" }}>

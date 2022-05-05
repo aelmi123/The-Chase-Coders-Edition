@@ -8,6 +8,6 @@ export const Timer = () => {
         }, 1000)
     })
   return (
-    <div><h2>Timer: {count}</h2></div>
+    <div>{count}</div>
   )
 }
