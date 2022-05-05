@@ -1,7 +1,7 @@
 import React from 'react';
 import { NewGameForm } from '../../components/NewGameForm';
 import { Leaderboard } from '../../components/Leaderboard'
-import { Timer } from '../../components/Timer'
+// import { Timer } from '../../components/Timer'
 import './styles.css'
 
 export const Homepage = () => {
@@ -41,7 +41,7 @@ export const Homepage = () => {
         <h3>The Rules</h3>
         <p>here are some rules</p>
       </div>
-      <Timer/>
+      {/* <Timer/> */}
       
       <button className='hidden' onClick={renderNewForm}>New Game</button>
       <button>Join Game</button>

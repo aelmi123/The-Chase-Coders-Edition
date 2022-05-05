@@ -16,13 +16,14 @@ Topics:[
     {name:"locked", color:"danger"},
 ],
 selectedTopic:null,
+score: 12,
 UserDetails:{
     name: null,
     players: null,
     difficulty: null,
     questions: null,
     room: null,
-    score: null
+    
 }
 
 }
@@ -40,6 +41,11 @@ switch(action.type){
         return{
             ...state,
             selectedTopic:action.payload
+        }
+    case "updateScore":
+        return{
+            ...state,
+            score:action.payload
         }
 
     default:
