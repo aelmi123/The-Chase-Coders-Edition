@@ -11,5 +11,5 @@ VALUES
     ('peterlydev', 10),
     ('bethan98', 15),
     ('anwar', 18),
-    ('anishakdeol', 19),
+    ('anishak', 19),
     ('saruThy', 15);

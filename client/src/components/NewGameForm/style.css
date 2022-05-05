@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Dancing+Script:wght@700&family=Grape+Nuts&family=Indie+Flower&family=Lobster&family=Poppins:wght@100&family=Quicksand&display=swap');
+
 input, select {
     width: 100%;
     height: 30px;
@@ -7,8 +9,13 @@ input, select {
 }
 .newGame {
     width: 25%;
+    font-family: 'Quicksand';
 }
 
 .box {
-    background-color: cadetblue;
+    background-color: #003049;
+}
+
+.start-game {
+    background-color: aqua;
 }
