@@ -10,6 +10,15 @@ export const userInfo=(obj=>async(dispatch)=>{
     })
 
 })
+export const updateScore=(obj=>async(dispatch)=>{
+
+    dispatch({
+        type:"updateScore",
+        payload:obj
+
+    })
+
+})
 export const selectedTopic=(obj=>async(dispatch)=>{
 console.log("here is", obj)
     dispatch({
