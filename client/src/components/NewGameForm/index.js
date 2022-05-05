@@ -45,10 +45,10 @@ export const NewGameForm = () => {
         <input type='text' name='Name' placeholder='Name' onChange={updateName}/>
 
         <label htmlFor='NumPlayers'>No. of Players:</label>
-        <input type='number' name='NumPlayers' min="1" max="5" onChange={updatePlayers}/>
+        <input type='number' name='NumPlayers' placeholder="How Many Players?"min="1" max="5" onChange={updatePlayers}/>
 
         <label htmlFor='RoomName'>Room Name:</label>
-        <input type='text' name='RoomName'  onChange={updateRoom}/>
+        <input type='text' placeholder="Enter Room Name" name='RoomName'  onChange={updateRoom}/>
 
         <label htmlFor='Difficulty'>Difficulty:</label>
         <select id='Difficulty' onChange={updateDifficulty}> 
@@ -58,8 +58,5 @@ export const NewGameForm = () => {
             <option value="hard">Hard</option>
         </select>
 
-        <input type='submit' value='Start Game'/>
+        <input className="start-game"type='submit' value='Start Game'/>
     </form>
-    </div>
-  )
-}

@@ -16,12 +16,12 @@ Topics:[
     {name:"locked", color:"danger"},
 ],
 selectedTopic:null,
-score: 12,
+score: null,
 UserDetails:{
     name: null,
     players: null,
     difficulty: null,
-    questions: null,
+    questions: 20,
     room: null,
     
 }
@@ -31,18 +31,17 @@ export const EventReducers = (state= initialState, action)=>{
   
 switch(action.type){
 
-    
-    case "UserInfo":
+    case "USER_INFO":
         return{
             ...state,
             UserDetails:action.payload
         }
-    case "selectedTopic":
+    case "SELECTED_TOPIC":
         return{
             ...state,
             selectedTopic:action.payload
         }
-    case "updateScore":
+    case "UPDATE_SCORE":
         return{
             ...state,
             score:action.payload
