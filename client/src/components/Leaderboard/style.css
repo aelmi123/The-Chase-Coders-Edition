@@ -5,12 +5,16 @@
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 100%;
+    display: inline;
+    position: absolute;
+    left: 40%;
+    margin: 20px auto;
 }
 
 .leaderboard th, .leaderboard td {
-    border: 5px solid #ddd;
+    border: 5px solid rgb(238,174,202);
     padding: 5px;
-    
+
 
 }
 

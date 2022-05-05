@@ -30,9 +30,9 @@ export const TopicGrid = () => {
     return (
         <div className='container'>
             <div className="row" style={{marginTop:"2%"}}>
-                <h1 className='text-center'>Hello {userName}</h1>
+                <h1 className='text-center name'>Hello {userName},</h1>
                 {error===""?
-                    <h4  className='text-center mb-4 '>Please choose a topic</h4>
+                    <h4  className='text-center sub-Title mb-4 '>Please choose a topic</h4>
                 :
                     <h4  className='text-center bg-danger  mb-4'>You can not visit a locked topic</h4>
                                 }

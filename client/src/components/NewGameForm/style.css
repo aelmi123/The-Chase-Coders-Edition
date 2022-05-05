@@ -12,10 +12,7 @@ input, select {
     font-family: 'Quicksand';
 }
 
-.box {
-    background-color: #003049;
-}
 
 .start-game {
-    background-color: aqua;
+    background-color: #9bc194;
 }
