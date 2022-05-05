@@ -1,14 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Dancing+Script:wght@700&family=Grape+Nuts&family=Indie+Flower&family=Lobster&family=Poppins:wght@100&display=swap');
+
 body {
-    background-image: url('https://images.squarespace-cdn.com/content/v1/54d15998e4b0553df778d21d/1587410706320-FWQ3NAYEL6KNVYIGKA8Y/PixelPro+Animated+Background+5.png?format=1000w');
-    background-color: rgb(43, 57, 93);
+    /* background-image: url('https://images.squarespace-cdn.com/content/v1/54d15998e4b0553df778d21d/1587410706320-FWQ3NAYEL6KNVYIGKA8Y/PixelPro+Animated+Background+5.png?format=1000w'); */
+    background-color: #003049;
     color: white;
+    font-family: 'Indie Flower';
+}
+
+.title {
+    font-family: 'Grape Nuts';
+    padding: 75px 0px 10px ;
+    font-size: 50px;
+}
+
+
+.rules {
+    font-family: 'sans-serif';
+    background-color: lightgrey;
+    /* width: 50%; */
+    border: 15px #003049;
+    padding: 35px;;
+    margin: 50px;
+    color: black;
+}
+
+.rulesTitle {
+    font-family: 'Bangers';
 }
 
 .home {
     text-align: center;
-}
-.rules {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 button {
     border-radius: 12px;
