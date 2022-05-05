@@ -1,4 +1,4 @@
-const db = require('../dbconfig/init');
+const db = require('../init');
 
 class Users {
     constructor(data){
