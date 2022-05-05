@@ -1,41 +1,41 @@
 import React, { useEffect, useState } from "react";
 import { QuestionLayout } from "../../components/QuestionLayout";
-import { GetQuestions } from "../../actions/EventActions";
+import { getTopicId } from "../../actions/EventActions";
 import { useSelector } from "react-redux";
 import axios from "axios";
 
 export const Question = () => {
   const [Questions, setQuestions] = useState([]);
 
-  const getTopicId = (topic) => {
-    switch (topic) {
-      case "General Knowledge":
-        return 9;
-      case "Film":
-        return 11;
-      case "Music":
-        return 12;
-      case "Television":
-        return 14;
-      case "Video Games":
-        return 15;
-      case "Sports":
-        return 21;
-      case "Celebrities":
-        return 26;
-      case "Animals":
-        return 27;
-      default:
-        return "";
-    }
-  };
+//   const getTopicId = (topic) => {
+//     switch (topic) {
+//       case "General Knowledge":
+//         return 9;
+//       case "Film":
+//         return 11;
+//       case "Music":
+//         return 12;
+//       case "Television":
+//         return 14;
+//       case "Video Games":
+//         return 15;
+//       case "Sports":
+//         return 21;
+//       case "Celebrities":
+//         return 26;
+//       case "Animals":
+//         return 27;
+//       default:
+//         return "";
+//     }
+//   };
 
   const UserDetails = useSelector((state) => state.UserDetails);
  
 
   const { difficulty } = UserDetails;
   const { questions } = UserDetails;
-  const { selectedTopic } = useSelector((state) => state.selectedTopic);
+  const  selectedTopic  = useSelector((state) => state.selectedTopic);
   console.log(selectedTopic)
 
   const topicId = getTopicId(selectedTopic);
@@ -50,9 +50,9 @@ export const Question = () => {
         setQuestions(response.data.results);
       });
   }, []);
-  useEffect(() => {
-    console.log("Questions", Questions);
-  });
+//   useEffect(() => {
+//     console.log("Questions", Questions);
+//   });
   // const [options, setOptions] = useState();
   // const [score, setScore] = useState(0);
   // const [currQues, setCurrQues] = useState(0);

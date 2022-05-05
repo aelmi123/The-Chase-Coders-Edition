@@ -50,6 +50,18 @@ class Users {
         })
     }
 
+    // static createUser(data){
+    //     return new Promise(async (resolve, reject) => {
+    //         try {
+    //                 const user = await db.query(`INSERT INTO users (username, score) VALUES ($1, $2) RETURNING *;`, [data.username, data.score])
+    //                 resolve ([user.rows[0]])
+                
+    //         } catch (error) {
+    //             reject(`Failed to store user`)
+    //         }
+    //     })
+    // }
+
 }
 
 module.exports = Users;

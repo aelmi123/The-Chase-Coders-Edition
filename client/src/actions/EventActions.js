@@ -2,7 +2,7 @@
 // import {useSelector} from 'react-redux'
 
 export const userInfo=(obj=>async(dispatch)=>{
-
+    console.log("here is", obj)
     dispatch({
         type:"USER_INFO",
         payload:obj
