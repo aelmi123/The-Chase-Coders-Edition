@@ -16,3 +16,17 @@
 //   expect(getByTestId("title")).toHaveTextContent("title");
 //   expect(getByText("title")).toContain("Welcome to You're a Quizard, Harry!");
 // });
+
+import { default as Homepage } from '.';
+import { screen, render } from '@testing-library/react';
+
+describe('Homepage', () => {
+
+    test('it renders', () => {
+        render(<Homepage />)
+        const form = screen.getByClass('form');
+        expect(form).toBeInTheDocument();
+    });
+
+});
+

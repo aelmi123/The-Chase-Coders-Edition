@@ -1,13 +1,21 @@
-// import { NewGameForm } from ".";
-// import { screen, render } from '@testing-library/react';
+// import {default as NewGameForm} from '.'
+// import { render, screen } from '@testing-library/react';
+// import '@testing-library/jest-dom'
+// import { MemoryRouter } from 'react-router-dom';
+// import { Provider } from "react-redux";
+// import {store} from "../../redux/store/store.js";
 
-// describe('Start Game', () => {
-
-//     test('start game button exists', () => {
-//         render (<NewGameForm />)
-//         const start-game = 
-//         expect(start-game).toBeTruthy;
-//         expect(start-game.textContent).toEqual( 'Start Game ')
+// describe('QuizGame', () => {
+//     let mockFunction;
+//     beforeEach(() => {
+//         mockFunction = jest.fn();
+//         render(<Provider store={store}><NewGameForm /></Provider>, { wrapper: MemoryRouter });
 //     });
+
+//     test("test if div is there", () => {
+//         let quiz = screen.getByRole("quiz");
+//         expect(quiz).toBeInTheDocument()
+//     })
+
 
 // })
