@@ -1,3 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Cinzel+Decorative:wght@900&family=Dancing+Script:wght@700&family=Grape+Nuts&family=Indie+Flower&family=Lobster&family=Poppins:wght@100&family=Quicksand&display=swap');
+@import url('http://fonts.cdnfonts.com/css/harry-potter');
+
 img {
-    width: 25%;
+    width: 15%;
+    position: relative;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.resultTitle {
+    text-align: center;
+    margin-top: 5%;
+    font-family: 'Harry Potter';
+    font-size: 70px;
+}
+
+#scoreTitle {
+    text-align: center;
+    font-family: 'Cinzel Decorative';
+    color: #9bc194;
+}
+
+#status {
+    text-align: center;
+    font-family: 'Poppins';
+}
+
+#leaderboardTitle {
+    text-align: center;
+    margin-top: 4%;
+    font-family: 'Cinzel Decorative';
+    color: #9bc194;
+    font-size: 30px;
+
+}
+
+#x {
+    display: block;
+}
+#resultLeaderbaord {
+    text-align: center;
 }
