@@ -15,15 +15,14 @@ Topics:[
     {name:"locked", color:"danger"},
     {name:"locked", color:"danger"},
 ],
-selectedTopic:null,
-score: null,
+selectedTopic: '',
+score: 0,
 UserDetails:{
-    name: null,
-    players: null,
-    difficulty: null,
+    name: '',
+    players: 1,
+    difficulty: '',
     questions: 20,
-    room: null,
-    
+    room: null,  
 }
 
 }
