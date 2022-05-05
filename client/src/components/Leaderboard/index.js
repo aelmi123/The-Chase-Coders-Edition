@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios'
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import './style.css';
 
 export const Leaderboard = () => {
     const [leaderboard, setLeaderboard] = useState([])
@@ -21,11 +22,11 @@ export const Leaderboard = () => {
         )}));
     };
     return (
-        <table>
+        <table classname="leaderboard">
         <thead>
             <tr>
-                <th> Username </th>
-                <th> Score </th>
+                <th className="title"> Username </th>
+                <th className="title title 1"> Score </th>
             </tr>
         </thead>
         <tbody>

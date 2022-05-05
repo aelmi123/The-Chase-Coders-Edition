@@ -60,3 +60,6 @@ export const NewGameForm = () => {
 
         <input className="start-game"type='submit' value='Start Game'/>
     </form>
+    </div>
+  )
+}
