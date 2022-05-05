@@ -1,0 +1,31 @@
+version: "3"
+services:
+  api:
+    image: node:latest
+    working_dir: /code
+    ports:
+      - 3001:3001
+    environment:
+      - PGUSER=QuizzardUser
+      - PGHOST=db
+      - PGPASSWORD=password
+      - PGDATABASE=users
+      - PGPORT=5432
+    depends_on:
+      - db
+    volumes:
+      - type: bind
+        source: ./api
+        target: /code
+    command: bash -c "npm install && npm run dev"
+  db:
+    image: postgres:latest
+    environment:
+      - POSTGRES_DB=users
+      - POSTGRES_USER=QuizzardUser
+      - POSTGRES_PASSWORD=password
+    volumes:
+      - "dbdata:/var/lib/postgresql/data"
+      - "./api/dbconfig:/docker-entrypoint-initdb.d/:ro"
+volumes:
+  dbdata:
