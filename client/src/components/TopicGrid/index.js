@@ -29,7 +29,7 @@ export const TopicGrid = () => {
    
     return (
         <div className='container'>
-            <div className="row" style={{marginTop:"2%"}}>
+            <div className="row" style={{marginTop:"4%"}}>
                 <h1 className='text-center name'>Hello {userName},</h1>
                 {error===""?
                     <h4  className='text-center sub-Title mb-4 '>Please choose a topic</h4>
@@ -41,8 +41,8 @@ export const TopicGrid = () => {
                 <div className='col-md-3 mb-2' key={index}>
                     {value.name!=="locked" ?
                     <button className={`bg-${value.color} hover width`}
-                    onClick={()=>handleValue(value.name)}>
-                        <div className= {`d-flex justify-content-center align-items-center`}style={{padding:"40px"}}>
+                    onClick={()=>handleValue(value.name)} style={{width:'75%'}}>
+                        <div className= {`d-flex justify-content-center align-items-center`}style={{padding:"50px"}}>
                         <h3>{value.name}</h3>
                         </div>
                     </button>:<button className={`bg-danger width`} onClick={()=>setError(value.name)}>
