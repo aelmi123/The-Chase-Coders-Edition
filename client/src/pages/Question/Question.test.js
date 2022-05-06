@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import { Question } from ".";
 import { screen, render } from '@testing-library/react';
 

@@ -1,32 +1,29 @@
-// import {default as Homepage } from '.';
-// import { MemoryRouter } from 'react-router-dom';
-
-// export const RouterWrapper = ({ children }) => (
-//   <MemoryRouter>{children}</MemoryRouter>
-// );
-
-// import { RouterWrapper } from '../path/to/test/utils';
-
-// it("inserts text in h2", () => {
-//   const { getByTestId, getByText } = render(
-//     <Header title="title" />,
-//     { wrapper: RouterWrapper }
-//   );
-
-//   expect(getByTestId("title")).toHaveTextContent("title");
-//   expect(getByText("title")).toContain("Welcome to You're a Quizard, Harry!");
-// });
-
-import { default as Homepage } from '.';
-import { screen, render } from '@testing-library/react';
+/**
+ * @jest-environment jsdom
+ */
+ import { default as Homepage } from '.';
+ import { render, screen } from '@testing-library/react';
+ import { MemoryRouter } from 'react-router-dom';
+ 
 
 describe('Homepage', () => {
 
-    test('it renders', () => {
-        render(<Homepage />)
-        const form = screen.getByClass('form');
-        expect(form).toBeInTheDocument();
+    test('it renders the homepage', () => {
+            render(<Homepage />, { wrapper: MemoryRouter })
+            const heading = screen.getByRole('Header')
+            expect(heading.textContent).toContain("Welcome to You're a Quizard, Harry!");
+        });
+
+    test('it renders the rules', () => {
+        const rules = screen.getByRole('rules')
+        expect(rules.textContent).toContain('The Rules');
     });
 
-});
+    test('renders rules paragraph', async () => {
+        render(<Homepage/>);
+        const rules = screen.getByText('The rules for this game are simple, have fun! You need a max of 4 players to play alongside you, but you can however play alone if you dare too. This quiz consists of several categories which you can choice yourself, along with the level of difficulty and players. You score is tracked across each question and will be displayed for you at the end. Make sure to get your answers right so you can top our leaderboard!')
+        expect(rules).toBeInTheDocument();
 
+    })
+//test that they redirect??
+});

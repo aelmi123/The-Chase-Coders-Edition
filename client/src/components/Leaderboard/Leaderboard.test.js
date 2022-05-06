@@ -1,22 +1,22 @@
-import { Leaderboard } from '.';
-import { screen, render } from '@testing-library/react';
+/**
+ * @jest-environment jsdom
+*/
 
+import React from 'react';
+import { screen, render } from "@testing-library/react";
+import { default as Leaderboard } from ".";
 
+describe("Leaderboard page", () => {
+    test("the table is rendered if the scores exist", async () => {
+        jest.spyOn(React, "useEffect").mockImplementation((f) => f());
+        render(<Leaderboard />);
+        const table = screen.getByTestId("table");
+        expect(table).toBeInTheDocument();
+    });
 
-// global.fetch = jest.fn(() => Promise.resolve({
-//     json: () => Promise.resolve({
-//         value: "Testing something!"
-//     })
-// }));
-
-// describe("Test", () => {
-
-//     it('Should have proper description after data fetch', async () => {
-
-//         // need to put mock logic here to make it work
-
-//         render(<Leaderboard/>);
-//         const description = await screen.findByTestId('description');
-//         expect(description.textContent).toBe("Testing something!");
-//     });
-// })
+    test('table rows exists', async () => {
+        render(<Leaderboard />);
+        const tr = screen.getByTestId("tr")
+        expect(tr).toBeInTheDocument();
+    })
+});

@@ -1,21 +1,25 @@
-// import {default as NewGameForm} from '.'
-// import { render, screen } from '@testing-library/react';
-// import '@testing-library/jest-dom'
-// import { MemoryRouter } from 'react-router-dom';
-// import { Provider } from "react-redux";
-// import {store} from "../../redux/store/store.js";
+/**
+ * @jest-environment jsdom
+ */
+import { default as NewGameForm } from '.';
+import { screen, render } from '@testing-library/react';
 
-// describe('QuizGame', () => {
-//     let mockFunction;
-//     beforeEach(() => {
-//         mockFunction = jest.fn();
-//         render(<Provider store={store}><NewGameForm /></Provider>, { wrapper: MemoryRouter });
-//     });
+test('renders number of players', async () => {
+    render(<NewGameForm />);
+    const form = screen.queryByAll('How Many Players?')
+    expect(form).toBeInTheDocument();
+})
 
-//     test("test if div is there", () => {
-//         let quiz = screen.getByRole("quiz");
-//         expect(quiz).toBeInTheDocument()
-//     })
+test('renders room name', () => {
+    render(<NewGameForm />);
+    const form = screen.queryByAll('Enter Room Name')
+    expect(form).toBeInTheDocument();
+})
 
 
-// })
+test('name', async () => {
+    render(<NewGameForm />);
+    const form = screen.queryBy('name')
+    expect(form).toBeInTheDocument();
+})
+

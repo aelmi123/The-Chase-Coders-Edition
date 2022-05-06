@@ -21,7 +21,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "jest --watchAll",
+    "test": "react-scripts test",
     "coverage": "jest --coverage",
     "eject": "react-scripts eject"
   },
@@ -44,6 +44,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/preset-react": "^7.16.7",
     "coverage": "^0.4.1"
   }
 }
