@@ -1,4 +1,4 @@
-### Lap 3 project: Quiz Game
+# Quiz Game
 
 ## Project Description
 
